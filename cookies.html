@@ -1,0 +1,121 @@
+<html>
+    <head><title>Cookies</title></head>
+    <body style="text-align: center;">
+        <h1>Cookies</h1>
+        <button type="button" onclick="myFunction()">Set background color</button>
+        <p id="domainfield"></p>
+        <h6>Q1</h6>
+        <pre>
+        <input type="button"  value="create cookie 1" onclick="create1()">   <input type="button" value="read cookie" onclick="read1()">
+        <br><br>
+        <input type="button" value="create cookie 2" onclick="create2()">   <input type="button" value="read cookie" onclick="read2()">
+        <br><br>
+        <input type="button" value="create cookie 3" onclick="create3()">   <input type="button" value="read cookie" onclick="read3()">
+        <br><br>
+        <h4 style="color:lime;">Local Storage</h4>
+        <input type="button" value="local storage1" onclick="create4()">
+        <p>Click on below button:</p>
+        <input type="button" value="count clicks" onclick="count1()">
+        <p>Number of clicks</p>
+        <p id="count"></p>
+        <h4 style="color:lime;">Session Storage</h4>
+        <input type="button" value="session storage1" onclick="create5()">
+        <p>Click on below button:</p>
+        <input type="button" value="count clicks" onclick="count2()">
+        <p>Number of clicks</p>
+        <p id="count"></p>
+    </pre>
+    </body>
+</html>
+<script>
+    let myDomain = window.document.domain;
+    document.getElementById("domainfield").innerHTML = myDomain;
+        function myFunction() {
+          document.body.style.backgroundColor = "red";
+        }
+    function create1()
+    {
+        document.cookie = "name=ANNA DANTIES";
+    }
+    function read1()
+    {
+        if(document.cookie.length!=0)
+        {
+            alert(document.cookie);
+        }
+        else
+        {
+            alert("cookie not available");
+        }
+    }
+    function create2()
+    {
+        var now = new Date();
+        now.setSeconds(now.getSeconds()+1);
+        document.cookie = "age=22";
+        document.cookie = "expires="+now.toUTCString()+"";
+    }
+    function read2()
+    {
+        if(document.cookie.length!=0)
+        {
+            alert(document.cookie);
+        }
+        else
+        {
+            alert("cookie not available");
+        }
+    }
+    function create3()
+    {
+        document.cookie = "Course=MCA";
+    }
+    function read3()
+    {
+        if(document.cookie.length!=0)
+        {
+            alert(document.cookie);
+        }
+        else
+        {
+            alert("cookie not available");
+        }
+    }
+    function create4()
+    {
+        if(document.cookie.length!=0)
+        {
+            localStorage.setItem("Semester","First");
+            localStorage.getItem("Semester");
+        }
+        else
+        {
+            alert("local storage not possible")
+        }
+    }
+    count1();
+    function count1()
+    {
+        if (localStorage.clickcount)
+        {
+            localStorage.clickcount = Number(localStorage.clickcount)+1;
+        }
+        else
+        {
+            localStorage.clickcount = 1;
+        }
+        document.getElementById("count").innerHTML = localStorage.clickcount;
+    }
+    function create5()
+    {
+        if(document.cookie.length!=0)
+        {
+            sessionStorage.setItem("Attendance","92%");
+            sessionStorage.getItem("Attendance");
+        }
+        else
+        {
+            alert("session storage not possible");
+        }
+    }
+</script>
