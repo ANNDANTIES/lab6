@@ -1,7 +1,7 @@
 <html>
     <head><title>Cookies</title></head>
-    <body style="text-align: center;">
-        <h1>Cookies</h1>
+    <body style="background-color:rgb(98, 134, 190);text-align: center;">
+        <h1 style="background-image:url(bgimg.png);">Cookies</h1>
         <button type="button" onclick="myFunction()">Set background color</button>
         <p id="domainfield"></p>
         <h6>Q1</h6>
@@ -23,11 +23,15 @@
         <p>Click on below button:</p>
         <input type="button" value="count clicks" onclick="count2()">
         <p>Number of clicks</p>
-        <p id="count"></p>
+        <p id="count1"></p>
+        <p>removing elements</p>
+        <input type="button" value="Removing cookie1" onclick="remove1()">   <input type="button" value="Removing cookie2" onclick="remove2()">
     </pre>
     </body>
 </html>
 <script>
+    let color = document.body.style.backgroundColor;
+    document.getElementById("demo").innerHTML = color;
     let myDomain = window.document.domain;
     document.getElementById("domainfield").innerHTML = myDomain;
         function myFunction() {
@@ -52,8 +56,7 @@
     {
         var now = new Date();
         now.setSeconds(now.getSeconds()+1);
-        document.cookie = "age=22";
-        document.cookie = "expires="+now.toUTCString()+"";
+        document.cookie = "age=22;expires=Thu,08 Dec 2022 12:53:00 GMT;SameSite=None;Secure";
     }
     function read2()
     {
@@ -118,4 +121,25 @@
             alert("session storage not possible");
         }
     }
+    count2();
+    function count2()
+    {
+        if (sessionStorage.clickcount)
+        {
+            sessionStorage.clickcount = Number(sessionStorage.clickcount)+1;
+        }
+        else
+        {
+            sessionStorage.clickcount = 1;
+        }
+        document.getElementById("count1").innerHTML = sessionStorage.clickcount;
+    }       
+    function remove1()
+    {
+            localStorage.removeItem("Semester");
+    }
+    function remove2()
+    {
+            localStorage.removeItem("clickcount");
+    }                  
 </script>
